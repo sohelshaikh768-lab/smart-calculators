@@ -1,0 +1,26 @@
+<!doctype html>
+<!--
+  GitHub Pages SPA fallback.
+  GitHub Pages has no server-side rewrites, so any direct visit to a
+  route like /blog/gst-faqs would normally 404. This script encodes
+  the path into a query string and redirects to index.html, where the
+  matching script in index.html decodes it back into the correct route.
+  Based on the well-known spa-github-pages technique.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting… | GST Calculator India</title>
+    <script>
+      (function () {
+        var l = window.location;
+        l.replace(
+          l.protocol + "//" + l.hostname + (l.port ? ":" + l.port : "") + "/?redirect=" + encodeURIComponent(l.pathname + l.search + l.hash)
+        );
+      })();
+    </script>
+  </head>
+  <body>
+    Redirecting…
+  </body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "GST Calculator India",
+  "short_name": "GST Calc",
+  "description": "Free online GST calculator for India — inclusive, exclusive & reverse GST plus percentage, discount and profit margin tools.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4f46e5",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
