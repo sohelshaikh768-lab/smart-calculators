@@ -74,10 +74,12 @@ export interface DiscountResult {
 }
 
 export function calculateDiscount(price: number, discountPercent: number): DiscountResult {
-  const discountAmount = (price * discountPercent) / 100;
+  const safePrice = Math.max(0, price);
+  const safeDiscountPercent = Math.max(0, Math.min(100, discountPercent));
+  const discountAmount = (safePrice * safeDiscountPercent) / 100;
   return {
     discountAmount: round2(discountAmount),
-    finalPrice: round2(price - discountAmount),
+    finalPrice: round2(Math.max(0, safePrice - discountAmount)),
     youSave: round2(discountAmount),
   };
 }
@@ -173,7 +175,7 @@ export function calculateAge(dob: Date, today: Date = new Date()): AgeResult {
   if (days < 0) days = 0;
 
   const msPerDay = 1000 * 60 * 60 * 24;
-  const totalDays = Math.floor((todayMidnight.getTime() - dobMidnight.getTime()) / msPerDay);
+  const totalDays = Math.max(0, Math.floor((todayMidnight.getTime() - dobMidnight.getTime()) / msPerDay));
   const totalMonths = years * 12 + months;
 
   // Next birthday — handle Feb 29 in non-leap years by using Feb 28
