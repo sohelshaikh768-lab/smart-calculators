@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { blogPosts } from "../data/blogPosts";
+import { allBlogPosts } from "../data/blogPosts";
 import { useSEO } from "../hooks/useSEO";
 import AdSlot from "../components/AdSlot";
 
@@ -22,12 +22,12 @@ export default function Blog() {
       <header className="animate-fade-in-up text-center">
         <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl dark:text-white">Knowledge Hub</h1>
         <p className="mx-auto mt-3 max-w-2xl text-slate-500 dark:text-slate-400">
-          In-depth, easy-to-understand articles on GST, percentage, EMI, SIP, FD, age calculation, QR codes and finance in India — {blogPosts.length} guides and growing.
+          In-depth, easy-to-understand articles on GST, percentage, EMI, SIP, FD, age calculation, QR codes and finance in India — {allBlogPosts.length} guides and growing.
         </p>
       </header>
 
       <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {blogPosts.map((post, i) => (
+        {allBlogPosts.map((post, i) => (
           <Link
             key={post.slug}
             to={`/blog/${post.slug}`}

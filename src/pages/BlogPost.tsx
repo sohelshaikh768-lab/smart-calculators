@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { getPostBySlug, blogPosts, type Block } from "../data/blogPosts";
+import { getPostBySlug, allBlogPosts, type Block } from "../data/blogPosts";
 import { useSEO } from "../hooks/useSEO";
 import AdSlot from "../components/AdSlot";
 import NotFound from "./NotFound";
@@ -70,7 +70,8 @@ export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
   const post = getPostBySlug(slug || "");
 
-  const related = blogPosts.filter((p) => p.slug !== slug).slice(0, 3);
+  const related = allBlogPosts.filter((p) => p.slug !== slug).slice(0, 3);
+  const ctaHref = post?.calculator || "/gst-calculator";
 
   useSEO({
     title: post ? `${post.title} | UtilityHub India` : "Article Not Found | UtilityHub India",
@@ -127,18 +128,49 @@ export default function BlogPost() {
       </div>
 
       <div className="mt-10 rounded-2xl border border-indigo-100 bg-indigo-50 p-6 text-center dark:border-indigo-900 dark:bg-indigo-500/10">
-        <p className="font-semibold text-indigo-900 dark:text-indigo-200">Ready to calculate your GST?</p>
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200">Ready to try the related calculator?</p>
         <Link
-          to="/gst-calculator"
+          to={ctaHref}
           className="mt-3 inline-block rounded-xl bg-indigo-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-indigo-700"
         >
-          Try the Free GST Calculator →
+          Open the calculator →
         </Link>
       </div>
 
       <div className="mt-10">
         <AdSlot />
       </div>
+
+      {post?.faqs && post.faqs.length > 0 && (
+        <section className="mt-12">
+          <h2 className="text-lg font-bold text-slate-900 dark:text-white">Frequently Asked Questions</h2>
+          <div className="mt-4 space-y-3">
+            {post.faqs.map((faq, index) => (
+              <details key={`${faq.question}-${index}`} className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+                <summary className="cursor-pointer font-semibold text-slate-800 dark:text-slate-100">{faq.question}</summary>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{faq.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {post?.relatedLinks && post.relatedLinks.length > 0 && (
+        <section className="mt-12">
+          <h2 className="text-lg font-bold text-slate-900 dark:text-white">Related Tools</h2>
+          <div className="mt-4 flex flex-wrap gap-3">
+            {post.relatedLinks.map((item) => (
+              <Link
+                key={item.to + item.label}
+                to={item.to}
+                className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-indigo-300 hover:text-indigo-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {related.length > 0 && (
         <section className="mt-12">

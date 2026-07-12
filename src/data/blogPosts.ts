@@ -3,6 +3,8 @@
 // any article generically. Each "block" renders as a section on the page.
 // -----------------------------------------------------------------------
 
+import { seoBlogArticles } from "./seoBlogArticles";
+
 export type Block =
   | { type: "p"; text: string }
   | { type: "h2"; text: string }
@@ -21,6 +23,10 @@ export interface BlogPost {
   readTime: string;
   category: string;
   blocks: Block[];
+  calculator?: string;
+  keywords?: string[];
+  relatedLinks?: Array<{ to: string; label: string }>;
+  faqs?: Array<{ question: string; answer: string }>;
 }
 
 export const blogPosts: BlogPost[] = [
@@ -640,6 +646,8 @@ export const blogPosts: BlogPost[] = [
   },
 ];
 
+export const allBlogPosts: BlogPost[] = [...blogPosts, ...seoBlogArticles];
+
 export function getPostBySlug(slug: string): BlogPost | undefined {
-  return blogPosts.find((p) => p.slug === slug);
+  return allBlogPosts.find((p) => p.slug === slug);
 }
