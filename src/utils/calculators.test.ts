@@ -63,4 +63,14 @@ describe("calculator helpers", () => {
     expect(calculateSIP(0, 12, 10)).toEqual({ invested: 0, estimatedReturns: 0, maturityValue: 0 });
     expect(calculateFD(0, 7.5, 5)).toEqual({ maturity: 0, interest: 0, invested: 0 });
   });
+
+  it("clamps negative or invalid finance values to safe zero results", () => {
+    expect(calculateGstExclusive(-100, -18)).toMatchObject({ originalAmount: 0, gstAmount: 0, cgst: 0, sgst: 0, totalAmount: 0 });
+    expect(calculateGstInclusive(-100, -18)).toMatchObject({ originalAmount: 0, gstAmount: 0, cgst: 0, sgst: 0, totalAmount: 0 });
+    expect(calculateDiscount(-100, -20)).toEqual({ discountAmount: 0, finalPrice: 0, youSave: 0 });
+    expect(calculateProfitMargin(-100, -50)).toEqual({ profit: 0, profitPercentOnCost: 0, marginPercentOnSale: 0 });
+    expect(calculateEMI(-1000, -5, -2)).toEqual({ emi: 0, totalInterest: 0, totalPayment: 0 });
+    expect(calculateSIP(-1000, -5, -2)).toEqual({ invested: 0, estimatedReturns: 0, maturityValue: 0 });
+    expect(calculateFD(-1000, -5, -2)).toEqual({ maturity: 0, interest: 0, invested: 0 });
+  });
 });

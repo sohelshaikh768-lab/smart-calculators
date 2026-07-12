@@ -18,8 +18,8 @@ const FAQS: FaqItem[] = [
 
 export default function SipCalculator() {
   useSEO({
-    title: "SIP Calculator - Calculate Mutual Fund Returns Online Free India",
-    description: "Free SIP calculator to calculate mutual fund SIP returns. Estimate maturity value, invested amount & wealth gain for monthly SIP investments India.",
+    title: "Free SIP Calculator India — Mutual Fund Returns & Maturity",
+    description: "Estimate mutual fund SIP maturity value, total investment and wealth gain with our free SIP calculator for Indian investors.",
     path: "/sip-calculator",
     jsonLd: {
       "@context": "https://schema.org",

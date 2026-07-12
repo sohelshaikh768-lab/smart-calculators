@@ -14,7 +14,7 @@ export default function LegalPage({
   updated: string;
   children: ReactNode;
 }) {
-  useSEO({ title: `${title} | GST Calc India`, description, path });
+  useSEO({ title: `${title} | UtilityHub India`, description, path });
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">

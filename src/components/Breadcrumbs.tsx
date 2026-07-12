@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { SITE_URL } from "../hooks/useSEO";
 
 export interface BreadcrumbItem {
   label: string;
@@ -25,7 +26,7 @@ export default function Breadcrumbs({ items, className = "" }: Props) {
         "@type": "ListItem",
         position: index + 1,
         name: item.label,
-        ...(item.to ? { item: `https://gstcalculator-india.example.com${item.to}` } : {}),
+        ...(item.to ? { item: `${SITE_URL}${item.to}` } : {}),
       })),
     };
 

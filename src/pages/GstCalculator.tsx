@@ -26,9 +26,9 @@ const MODES: { key: Mode; label: string; hint: string }[] = [
 
 export default function GstCalculator() {
   useSEO({
-    title: "GST Calculator India — Inclusive, Exclusive & Reverse GST | Free Tool",
+    title: "Free GST Calculator India — Inclusive, Exclusive & Reverse GST",
     description:
-      "Free online GST calculator for India. Instantly calculate GST exclusive, inclusive & reverse GST for 0%, 3%, 5%, 12%, 18% & 28% slabs with CGST/SGST breakdown.",
+      "Calculate GST inclusive, exclusive and reverse GST for India with 0%, 3%, 5%, 12%, 18% and 28% slabs and CGST/SGST breakdown.",
     path: "/gst-calculator",
     jsonLd: {
       "@context": "https://schema.org",

@@ -20,8 +20,8 @@ const FAQS: FaqItem[] = [
 
 export default function ReversePercentageCalculator() {
   useSEO({
-    title: "Reverse Percentage Calculator - Find Original Value Before % | Free",
-    description: "Free reverse percentage calculator. Find original value before percentage increase or find total when you know partial value and its percentage.",
+    title: "Free Reverse Percentage Calculator India — Find Original Value",
+    description: "Work backward from a known percentage to find the original value, base amount or total with our free reverse percentage calculator.",
     path: "/reverse-percentage-calculator",
     jsonLd: {
       "@context": "https://schema.org",

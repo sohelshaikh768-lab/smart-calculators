@@ -3,8 +3,8 @@ import { useSEO } from "../hooks/useSEO";
 
 export default function NotFound() {
   useSEO({
-    title: "404 — Page Not Found | GST Calc India",
-    description: "The page you are looking for could not be found.",
+    title: "404 — Page Not Found | UtilityHub India",
+    description: "The page you are looking for could not be found. Explore our free GST and finance calculators instead.",
     path: "/404",
   });
 

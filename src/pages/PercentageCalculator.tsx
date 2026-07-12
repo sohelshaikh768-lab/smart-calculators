@@ -19,9 +19,9 @@ type Mode = "of" | "what-percent" | "change";
 
 export default function PercentageCalculator() {
   useSEO({
-    title: "Percentage Calculator — Find % of a Number Instantly | Free Tool",
+    title: "Free Percentage Calculator India — Find % of Any Number",
     description:
-      "Free online percentage calculator. Find what X% of a number is, what percent one number is of another, and percentage increase/decrease instantly.",
+      "Calculate percentages quickly for discounts, marks, growth, increase/decrease and ratio-based tasks with our free percentage calculator.",
     path: "/percentage-calculator",
     jsonLd: {
       "@context": "https://schema.org",

@@ -25,8 +25,8 @@ const COMPOUND_OPTIONS = [
 
 export default function FdCalculator() {
   useSEO({
-    title: "FD Calculator - Fixed Deposit Interest & Maturity Calculator | Free",
-    description: "Free FD calculator to calculate fixed deposit maturity amount, interest earned and total value for any principal, rate and tenure with quarterly compounding.",
+    title: "Free FD Calculator India — Fixed Deposit Maturity & Interest",
+    description: "Estimate fixed deposit maturity amount, interest earned and total value with our free FD calculator for Indian deposits.",
     path: "/fd-calculator",
     jsonLd: {
       "@context": "https://schema.org",

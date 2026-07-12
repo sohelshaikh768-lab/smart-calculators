@@ -3,8 +3,8 @@ import { useSEO } from "../hooks/useSEO";
 
 export default function Contact() {
   useSEO({
-    title: "Contact Us | Utility Tools Hub India",
-    description: "Get in touch with Utility Tools Hub India for feedback, feature requests, partnership or support queries about our calculators.",
+    title: "Contact UtilityHub India | Support for GST & Finance Calculators",
+    description: "Get in touch with UtilityHub India for feedback, calculator requests, partnership ideas or support related to our free Indian finance tools.",
     path: "/contact",
   });
 

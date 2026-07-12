@@ -5,9 +5,9 @@ import AdSlot from "../components/AdSlot";
 
 export default function Blog() {
   useSEO({
-    title: "Blog — GST, Finance & Utility Calculators Guides | UtilityHub India",
+    title: "GST & Finance Blog | Calculator Guides for India",
     description:
-      "Explore 20 in-depth guides covering GST calculations, percentage, EMI, SIP, FD, age, QR codes, and finance tips for India. Free tutorials with formulas and examples.",
+      "Read practical guides on GST, percentage, EMI, SIP, FD, age calculations, QR codes and finance basics for India with formulas and examples.",
     path: "/blog",
     jsonLd: {
       "@context": "https://schema.org",

@@ -17,8 +17,8 @@ const FAQS: FaqItem[] = [
 
 export default function LoanCalculator() {
   useSEO({
-    title: "Loan Calculator - Calculate Total Interest & Payment Schedule | Free",
-    description: "Free loan calculator for home, personal, car loans. Calculate EMI, total interest, total payable and view principal vs interest split.",
+    title: "Free Loan Calculator India — EMI, Interest & Total Payable",
+    description: "Estimate EMI, total interest and total payable for home, personal or car loans with our simple loan calculator.",
     path: "/loan-calculator",
     jsonLd: {
       "@context": "https://schema.org",

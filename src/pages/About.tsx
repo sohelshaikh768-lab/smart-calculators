@@ -4,8 +4,8 @@ import AdSlot from "../components/AdSlot";
 
 export default function About() {
   useSEO({
-    title: "About Us | Utility Tools Hub India",
-    description: "Learn about Utility Tools Hub India — our mission to make GST, finance, and utility calculations simple, fast and free for every Indian business and individual.",
+    title: "About UtilityHub India | Free GST, EMI, SIP & Finance Calculators",
+    description: "Learn about UtilityHub India, our mission to make GST, EMI, SIP, age and finance calculations simple, fast and free for Indian users.",
     path: "/about",
   });
 

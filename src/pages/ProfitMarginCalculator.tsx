@@ -17,9 +17,9 @@ const MARGIN_FAQS: FaqItem[] = [
 
 export default function ProfitMarginCalculator() {
   useSEO({
-    title: "Profit Margin Calculator — Calculate Profit % Instantly | Free Tool",
+    title: "Free Profit Margin Calculator India — Profit % & Margin",
     description:
-      "Free profit margin calculator. Enter cost price and selling price to instantly calculate profit, profit percentage and margin percentage.",
+      "Calculate profit, profit margin and markup instantly from cost price and selling price using our free margin calculator.",
     path: "/profit-margin-calculator",
     jsonLd: {
       "@context": "https://schema.org",

@@ -18,8 +18,8 @@ const FAQS: FaqItem[] = [
 
 export default function EmiCalculator() {
   useSEO({
-    title: "EMI Calculator - Calculate Loan EMI, Interest & Total Payment | Free",
-    description: "Free EMI calculator for home, car, personal loans. Instantly calculate monthly EMI, total interest payable and total payment amount.",
+    title: "Free EMI Calculator India — Loan EMI, Interest & Total Payment",
+    description: "Calculate home, car, or personal loan EMI instantly with total interest and total payment using our free EMI calculator.",
     path: "/emi-calculator",
     jsonLd: {
       "@context": "https://schema.org",

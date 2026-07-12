@@ -7,10 +7,14 @@ interface SEOOptions {
   image?: string;
   type?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  robots?: string;
+  siteName?: string;
+  locale?: string;
+  twitterSite?: string;
 }
 
-const SITE_URL = "https://gstcalculator-india.example.com";
-const DEFAULT_IMAGE = `${SITE_URL}/og-image.jpg`;
+export const SITE_URL = (import.meta.env.VITE_SITE_URL || "https://smart-calculators-nine.vercel.app").replace(/\/$/, "");
+export const DEFAULT_IMAGE = `${SITE_URL}/og-image.jpg`;
 
 function setMeta(attr: "name" | "property", key: string, content: string) {
   let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
@@ -32,28 +36,40 @@ function setLink(rel: string, href: string) {
   el.setAttribute("href", href);
 }
 
-export function useSEO({ title, description, path = "/", image = DEFAULT_IMAGE, type = "website", jsonLd }: SEOOptions) {
+export function useSEO({ title, description, path = "/", image = DEFAULT_IMAGE, type = "website", jsonLd, robots = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1", siteName = "UtilityHub India", locale = "en_IN", twitterSite }: SEOOptions) {
   const jsonLdKey = jsonLd ? JSON.stringify(jsonLd) : "";
 
   useEffect(() => {
-    const url = `${SITE_URL}${path}`;
+    const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+    const url = `${SITE_URL}${normalizedPath}`;
     document.title = title;
 
     setMeta("name", "description", description);
+    setMeta("name", "robots", robots);
+    setMeta("name", "author", siteName);
+    setMeta("name", "theme-color", "#4f46e5");
     setLink("canonical", url);
 
     setMeta("property", "og:title", title);
     setMeta("property", "og:description", description);
     setMeta("property", "og:url", url);
     setMeta("property", "og:image", image);
+    setMeta("property", "og:image:alt", title);
+    setMeta("property", "og:image:width", "1200");
+    setMeta("property", "og:image:height", "630");
     setMeta("property", "og:type", type);
-    setMeta("property", "og:site_name", "UtilityHub India");
+    setMeta("property", "og:site_name", siteName);
+    setMeta("property", "og:locale", locale);
 
     setMeta("name", "twitter:title", title);
     setMeta("name", "twitter:description", description);
     setMeta("name", "twitter:url", url);
     setMeta("name", "twitter:image", image);
+    setMeta("name", "twitter:image:alt", title);
     setMeta("name", "twitter:card", "summary_large_image");
+    if (twitterSite) {
+      setMeta("name", "twitter:site", twitterSite);
+    }
 
     const existing = document.getElementById("route-jsonld");
     if (existing) existing.remove();
@@ -74,5 +90,5 @@ export function useSEO({ title, description, path = "/", image = DEFAULT_IMAGE, 
       window.scrollTo(0, 0);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [title, description, path, image, type, jsonLdKey]);
+  }, [title, description, path, image, type, jsonLdKey, robots, siteName, locale, twitterSite]);
 }

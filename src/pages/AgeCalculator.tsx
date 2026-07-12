@@ -17,8 +17,8 @@ const FAQS: FaqItem[] = [
 
 export default function AgeCalculator() {
   useSEO({
-    title: "Age Calculator - Calculate Exact Age in Years, Months, Days | Free",
-    description: "Free age calculator to find your exact age in years, months, days. Calculate total days lived, next birthday countdown and more instantly.",
+    title: "Free Age Calculator India — Exact Age in Years, Months & Days",
+    description: "Use our free age calculator to find exact age in years, months and days, plus total days lived and next birthday countdown instantly.",
     path: "/age-calculator",
     jsonLd: {
       "@context": "https://schema.org",

@@ -16,28 +16,42 @@ export interface GstResult {
 
 /** GST Exclusive: user enters amount BEFORE tax, we add GST on top. */
 export function calculateGstExclusive(amount: number, rate: number): GstResult {
-  const gstAmount = (amount * rate) / 100;
+  const safeAmount = Math.max(0, amount);
+  const safeRate = Math.max(0, rate);
+  const gstAmount = (safeAmount * safeRate) / 100;
   return {
-    originalAmount: round2(amount),
+    originalAmount: round2(safeAmount),
     gstAmount: round2(gstAmount),
     cgst: round2(gstAmount / 2),
     sgst: round2(gstAmount / 2),
-    totalAmount: round2(amount + gstAmount),
-    rate,
+    totalAmount: round2(safeAmount + gstAmount),
+    rate: round2(safeRate),
   };
 }
 
 /** GST Inclusive: user enters amount AFTER tax, we extract the base + GST. */
 export function calculateGstInclusive(amount: number, rate: number): GstResult {
-  const originalAmount = (amount * 100) / (100 + rate);
-  const gstAmount = amount - originalAmount;
+  const safeAmount = Math.max(0, amount);
+  const safeRate = Math.max(0, rate);
+  if (safeAmount <= 0 || safeRate <= 0) {
+    return {
+      originalAmount: 0,
+      gstAmount: 0,
+      cgst: 0,
+      sgst: 0,
+      totalAmount: 0,
+      rate: round2(safeRate),
+    };
+  }
+  const originalAmount = (safeAmount * 100) / (100 + safeRate);
+  const gstAmount = safeAmount - originalAmount;
   return {
     originalAmount: round2(originalAmount),
     gstAmount: round2(gstAmount),
     cgst: round2(gstAmount / 2),
     sgst: round2(gstAmount / 2),
-    totalAmount: round2(amount),
-    rate,
+    totalAmount: round2(safeAmount),
+    rate: round2(safeRate),
   };
 }
 
@@ -91,11 +105,21 @@ export interface ProfitMarginResult {
 }
 
 export function calculateProfitMargin(costPrice: number, sellingPrice: number): ProfitMarginResult {
-  const profit = sellingPrice - costPrice;
+  const safeCostPrice = Math.max(0, costPrice);
+  const safeSellingPrice = Math.max(0, sellingPrice);
+  if (safeCostPrice <= 0 || safeSellingPrice <= 0) {
+    const profit = safeSellingPrice - safeCostPrice;
+    return {
+      profit: round2(Math.max(0, profit)),
+      profitPercentOnCost: 0,
+      marginPercentOnSale: safeSellingPrice === 0 ? 0 : 100,
+    };
+  }
+  const profit = safeSellingPrice - safeCostPrice;
   return {
     profit: round2(profit),
-    profitPercentOnCost: costPrice === 0 ? 0 : round2((profit / costPrice) * 100),
-    marginPercentOnSale: sellingPrice === 0 ? 0 : round2((profit / sellingPrice) * 100),
+    profitPercentOnCost: round2((profit / safeCostPrice) * 100),
+    marginPercentOnSale: round2((profit / safeSellingPrice) * 100),
   };
 }
 

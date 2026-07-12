@@ -29,8 +29,8 @@ function isValidHexColor(hex: string): boolean {
 
 export default function QRGenerator() {
   useSEO({
-    title: "QR Code Generator - Create Free QR Code for URL, Text, UPI | Instant",
-    description: "Free QR code generator. Create QR codes for URLs, text, UPI payments, email, phone instantly. Download PNG, customizable size.",
+    title: "Free QR Code Generator India — URL, Text, UPI & Contact QR",
+    description: "Create QR codes for URLs, text, UPI payments, email, phone and contact details instantly with our free QR generator.",
     path: "/qr-code-generator",
     jsonLd: {
       "@context": "https://schema.org",

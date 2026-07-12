@@ -73,7 +73,7 @@ export default function BlogPost() {
   const related = blogPosts.filter((p) => p.slug !== slug).slice(0, 3);
 
   useSEO({
-    title: post ? `${post.title} | GST Calc India` : "Article Not Found",
+    title: post ? `${post.title} | UtilityHub India` : "Article Not Found | UtilityHub India",
     description: post?.description || "This article could not be found.",
     path: `/blog/${slug}`,
     type: "article",
@@ -84,7 +84,7 @@ export default function BlogPost() {
           headline: post.title,
           description: post.description,
           datePublished: post.date,
-          author: { "@type": "Organization", name: "GST Calc India" },
+          author: { "@type": "Organization", name: "UtilityHub India" },
         }
       : undefined,
   });

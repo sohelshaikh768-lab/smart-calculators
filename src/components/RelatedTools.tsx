@@ -6,8 +6,14 @@ interface ToolLink {
   icon?: string;
 }
 
+interface BlogLink {
+  to: string;
+  label: string;
+}
+
 interface Props {
   tools?: ToolLink[];
+  blogs?: BlogLink[];
   title?: string;
 }
 
@@ -25,8 +31,21 @@ const DEFAULT_TOOLS: ToolLink[] = [
   { to: "/qr-code-generator", label: "QR Generator", icon: "🔳" },
 ];
 
-export default function RelatedTools({ tools, title = "Explore Other Tools" }: Props) {
-  const list = tools || DEFAULT_TOOLS;
+const DEFAULT_BLOGS: BlogLink[] = [
+  { to: "/blog/how-to-calculate-gst-in-india", label: "How to calculate GST in India" },
+  { to: "/blog/gst-inclusive-vs-exclusive", label: "GST inclusive vs exclusive pricing" },
+  { to: "/blog/gst-rates-explained", label: "GST rates explained in India" },
+  { to: "/blog/reverse-gst-calculator-guide", label: "Reverse GST calculator guide" },
+  { to: "/blog/percentage-calculator-guide", label: "Percentage calculator explained" },
+  { to: "/blog/emi-calculator-guide-india", label: "How EMI calculators work" },
+  { to: "/blog/sip-calculator-guide-india", label: "How SIP calculators estimate returns" },
+  { to: "/blog/qr-code-generator-guide", label: "QR code generator guide" },
+];
+
+export default function RelatedTools({ tools, blogs, title = "Related Tools & Guides" }: Props) {
+  const list = tools ?? DEFAULT_TOOLS;
+  const blogList = blogs ?? DEFAULT_BLOGS;
+
   return (
     <section className="mt-10 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 dark:border-slate-800 dark:bg-slate-900">
       <h2 className="text-lg font-bold text-slate-900 dark:text-white">{title}</h2>
@@ -41,6 +60,20 @@ export default function RelatedTools({ tools, title = "Explore Other Tools" }: P
             {t.label}
           </Link>
         ))}
+      </div>
+      <div className="mt-6 border-t border-slate-200 pt-5 dark:border-slate-800">
+        <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300">Helpful guides</h3>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {blogList.map((blog) => (
+            <Link
+              key={blog.to}
+              to={blog.to}
+              className="rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1.5 text-sm font-medium text-indigo-700 transition hover:bg-indigo-100 dark:border-indigo-900 dark:bg-indigo-500/10 dark:text-indigo-300"
+            >
+              {blog.label}
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );

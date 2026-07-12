@@ -17,9 +17,9 @@ const DISCOUNT_FAQS: FaqItem[] = [
 
 export default function DiscountCalculator() {
   useSEO({
-    title: "Discount Calculator — Find Sale Price & Savings Instantly | Free Tool",
+    title: "Free Discount Calculator India — Find Sale Price & Savings",
     description:
-      "Free discount calculator. Enter the original price and discount percentage to instantly find the discount amount and final sale price.",
+      "Calculate discount percentage, final sale price and savings instantly with our free discount calculator for India.",
     path: "/discount-calculator",
     jsonLd: {
       "@context": "https://schema.org",

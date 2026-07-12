@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import { GST_RATES, calculateGstExclusive, formatINR } from "../utils/calculators";
 import Newsletter from "../components/Newsletter";
 import AdSlot from "../components/AdSlot";
-import { useSEO } from "../hooks/useSEO";
+import { useSEO, SITE_URL } from "../hooks/useSEO";
 import { blogPosts } from "../data/blogPosts";
 
 const features = [
@@ -55,18 +55,20 @@ const tools = [
 
 export default function Home() {
   useSEO({
-    title: "Utility Tools Hub India — Free GST, EMI, SIP, Age, QR & Finance Calculators 2026",
+    title: "UtilityHub India — Free GST, EMI, SIP, Age, QR & Finance Calculators",
     description:
-      "India's complete utility tools hub: GST calculator, percentage, reverse %, discount, profit margin, age, EMI, loan, SIP, FD calculators & QR code generator. Free, fast & private.",
+      "Use free online calculators for GST, percentage, reverse percentage, discount, profit margin, age, EMI, loan, SIP, FD and QR codes in India.",
     path: "/",
     jsonLd: {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      name: "Utility Tools Hub India",
-      url: "https://gstcalculator-india.example.com/",
+      name: "UtilityHub India",
+      url: SITE_URL,
+      description: "Free online calculators for GST, finance, percentage and everyday utility needs in India.",
+      publisher: { "@type": "Organization", name: "UtilityHub India", url: SITE_URL },
       potentialAction: {
         "@type": "SearchAction",
-        target: "https://gstcalculator-india.example.com/blog?search={search_term_string}",
+        target: `${SITE_URL}/blog?search={search_term_string}`,
         "query-input": "required name=search_term_string",
       },
     },
